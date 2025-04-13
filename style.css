@@ -1,0 +1,386 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 20px;
+  background-color: #f0f0f0;
+}
+
+header {
+  text-align: center;
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+nav {
+  text-align: center;
+  margin: 20px 0;
+}
+
+nav a {
+  margin: 0 15px;
+  text-decoration: none;
+  color: #4CAF50;
+  font-weight: bold;
+}
+
+nav a:hover {
+  color: #2E7D32;
+}
+
+/* Quiz Styles */
+.quiz-container {
+  max-width: 600px;
+  margin: 0 auto;
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  color: #4CAF50;
+  margin-bottom: 10px;
+}
+
+p#question-text {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin: 10px 0;
+  font-size: 16px;
+}
+
+input[type="radio"] {
+  margin-right: 10px;
+}
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin: 10px 5px;
+}
+
+button:hover {
+  background-color: #2E7D32;
+}
+
+#result {
+  font-size: 18px;
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+#result.correct {
+  color: #4CAF50;
+  animation: fadeIn 0.5s;
+}
+
+#result.wrong {
+  color: #D32F2F;
+  animation: fadeIn 0.5s;
+}
+
+#result.final {
+  color: #1976D2;
+  font-size: 24px;
+}
+
+#score {
+  font-size: 18px;
+  color: #333;
+  margin-top: 10px;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Article Styles */
+.article-container {
+  max-width: 600px;
+  margin: 0 auto;
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.article-list {
+  list-style: none;
+  padding: 0;
+}
+
+.article-list li {
+  margin: 10px 0;
+}
+
+.article-list a {
+  text-decoration: none;
+  color: #4CAF50;
+  font-size: 18px;
+}
+
+.article-list a:hover {
+  color: #2E7D32;
+}
+
+.article-content {
+  max-width: 600px;
+  margin: 20px auto;
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.article-content p {
+  font-size: 16px;
+  line-height: 1.5;
+  color: #333;
+}
+
+.article-content img {
+  display: block;
+  margin: 20px auto;
+  max-width: 100%;
+}
+
+/* Index Page Enhancements */
+main {
+  max-width: 800px;
+  margin: auto;
+  padding: 30px;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+main h2 {
+  color: #4CAF50;
+  margin-bottom: 10px;
+}
+
+main p {
+  font-size: 18px;
+  color: #555;
+  margin-bottom: 30px;
+}
+
+.features {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.card {
+  background-color: #e8f5e9;
+  border: 2px solid #c8e6c9;
+  border-radius: 12px;
+  width: 250px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+  position: relative;
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.card h3 {
+  color: #388e3c;
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
+.card p {
+  font-size: 16px;
+  color: #444;
+}
+
+/* Popup Image on Hover */
+.popup {
+  display: none;
+  position: absolute;
+  top: -150px; /* Adjust based on image height */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: white;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+  max-width: 300px;
+}
+
+.popup-img {
+  max-width: 100%;
+  border-radius: 5px;
+}
+/* Background Image Styles */
+body {
+  background-image: url('https://images.unsplash.com/photo-1505576399279-565b52d4ac71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+
+/* Ensure readability over the background */
+main {
+  background-color: rgba(255, 255, 255, 0.9); /* Slightly transparent white */
+}
+/* Article Page Styles (Inspired by reallyfarms.com) */
+.article-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  font-family: Arial, sans-serif;
+}
+
+.article-header {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+}
+
+.article-header img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(80%);
+}
+
+.article-header-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: #fff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.article-header-content h1 {
+  font-size: 2.5em;
+  margin: 0;
+  color: #fff;
+}
+
+.article-header-content p {
+  font-size: 1.2em;
+  margin: 10px 0;
+  color: #d4e8d4;
+}
+
+.article-content {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+}
+
+.main-content {
+  flex: 2;
+  padding-right: 20px;
+}
+
+.main-content h2 {
+  color: #2e7d32;
+  font-size: 2em;
+  margin-top: 20px;
+}
+
+.main-content p {
+  font-size: 1.1em;
+  line-height: 1.6;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.main-content ul {
+  list-style-type: disc;
+  padding-left: 20px;
+  margin-bottom: 15px;
+}
+
+.main-content ul li {
+  font-size: 1.1em;
+  color: #444;
+  margin-bottom: 10px;
+}
+
+.sidebar {
+  flex: 1;
+  background-color: #f5f5f5;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.sidebar h3 {
+  color: #2e7d32;
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+.sidebar ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.sidebar ul li {
+  margin-bottom: 10px;
+}
+
+.sidebar ul li a {
+  text-decoration: none;
+  color: #2e7d32;
+  font-size: 1em;
+}
+
+.sidebar ul li a:hover {
+  color: #1b5e20;
+}
+/* Quiz Topic Cards Styles */
+.quiz-topics {
+  margin-top: 15px;
+}
+
+.quiz-card {
+  background-color: #d1e7dd;
+  border: 2px solid #a3cfbb;
+  border-radius: 8px;
+  padding: 10px;
+  margin: 10px 0;
+  text-align: center;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.quiz-card a {
+  text-decoration: none;
+  color: #1b5e20;
+  font-size: 1.1em;
+  font-weight: bold;
+}
+
+.quiz-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}

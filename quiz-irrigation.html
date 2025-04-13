@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Irrigation Techniques Quiz</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Irrigation Techniques Quiz</h1>
+  </header>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="article.html">Articles</a>
+    <a href="video.html">Videos</a>
+  </nav>
+  <main>
+    <div class="quiz-container">
+      <h2 id="question-number">Question 1</h2>
+      <p id="question-text">Loading question...</p>
+      <form id="quizForm">
+        <label><input type="radio" name="answer" value="0"> <span id="option0"></span></label><br>
+        <label><input type="radio" name="answer" value="1"> <span id="option1"></span></label><br>
+        <label><input type="radio" name="answer" value="2"> <span id="option2"></span></label><br>
+        <label><input type="radio" name="answer" value="3"> <span id="option3"></span></label><br>
+        <button type="button" id="submit-btn" onclick="checkAnswer()">Submit Answer</button>
+        <button type="button" id="next-btn" onclick="nextQuestion()" style="display: none;">Next Question</button>
+      </form>
+      <p id="result"></p>
+      <p id="score">Score: 0/20</p>
+    </div>
+  </main>
+  <script>
+    const questions = [
+      { q: "Which irrigation saves the most water?", options: ["Flood", "Drip", "Sprinkler", "Furrow"], correct: 1 },
+      { q: "What measures irrigation efficiency?", options: ["pH Meter", "Flow Meter", "Thermometer", "Hygrometer"], correct: 1 },
+      { q: "Which method uses pipes?", options: ["Drip", "Flood", "Surface", "Rain"], correct: 0 },
+      { q: "What controls water distribution?", options: ["Valves", "Pumps", "Tubes", "Buckets"], correct: 0 },
+      { q: "Which irrigation suits hilly land?", options: ["Drip", "Sprinkler", "Flood", "Furrow"], correct: 1 },
+      { q: "What prevents water runoff?", options: ["Terracing", "Flooding", "Overwatering", "Plowing"], correct: 0 },
+      { q: "Which system uses overhead sprinklers?", options: ["Drip", "Sprinkler", "Furrow", "Surface"], correct: 1 },
+      { q: "What stores water for irrigation?", options: ["Dams", "Pipes", "Hoses", "Buckets"], correct: 0 },
+      { q: "Which method minimizes evaporation?", options: ["Flood", "Drip", "Sprinkler", "Rain"], correct: 1 },
+      { q: "What adjusts water pressure?", options: ["Valves", "Pumps", "Filters", "Tubes"], correct: 0 },
+      { q: "Which irrigation needs level land?", options: ["Flood", "Drip", "Sprinkler", "Ditch"], correct: 0 },
+      { q: "What filters irrigation water?", options: ["Screens", "Pumps", "Valves", "Tanks"], correct: 0 },
+      { q: "Which method waters row crops?", options: ["Furrow", "Drip", "Sprinkler", "Flood"], correct: 0 },
+      { q: "What detects soil moisture?", options: ["Tensiometer", "pH Meter", "Thermometer", "Rain Gauge"], correct: 0 },
+      { q: "Which system uses drip lines?", options: ["Drip", "Sprinkler", "Flood", "Furrow"], correct: 0 },
+      { q: "What prevents water waste?", options: ["Timers", "Hoses", "Buckets", "Pipes"], correct: 0 },
+      { q: "Which irrigation suits sandy soil?", options: ["Drip", "Flood", "Sprinkler", "Furrow"], correct: 0 },
+      { q: "What maintains irrigation channels?", options: ["Dredging", "Plowing", "Seeding", "Mulching"], correct: 0 },
+      { q: "Which method uses natural slopes?", options: ["Furrow", "Drip", "Sprinkler", "Flood"], correct: 0 },
+      { q: "What ensures even water spread?", options: ["Nozzles", "Pumps", "Valves", "Filters"], correct: 0 }
+    ];
+
+    let currentQuestion = 0;
+    let score = 0;
+    const totalQuestions = questions.length;
+
+    loadQuestion();
+
+    function loadQuestion() {
+      if (currentQuestion < totalQuestions) {
+        let q = questions[currentQuestion];
+        document.getElementById("question-number").innerText = `Question ${currentQuestion + 1}`;
+        document.getElementById("question-text").innerText = q.q;
+        document.getElementById("option0").innerText = q.options[0];
+        document.getElementById("option1").innerText = q.options[1];
+        document.getElementById("option2").innerText = q.options[2];
+        document.getElementById("option3").innerText = q.options[3];
+        document.getElementById("result").innerText = "";
+        document.getElementById("submit-btn").style.display = "inline";
+        document.getElementById("next-btn").style.display = "none";
+        document.getElementById("quizForm").reset();
+      } else {
+        showFinalScore();
+      }
+      document.getElementById("score").innerText = `Score: ${score}/${totalQuestions}`;
+    }
+
+    function checkAnswer() {
+      let answers = document.getElementsByName("answer");
+      let selected = -1;
+      for (let i = 0; i < answers.length; i++) {
+        if (answers[i].checked) {
+          selected = parseInt(answers[i].value);
+        }
+      }
+      if (selected === -1) {
+        document.getElementById("result").innerText = "Please select an answer!";
+        return;
+      }
+      let correct = questions[currentQuestion].correct;
+      if (selected === correct) {
+        score++;
+        document.getElementById("result").innerText = "Correct!";
+        document.getElementById("result").classList.add("correct");
+      } else {
+        document.getElementById("result").innerText = `Wrong! Correct answer: ${questions[currentQuestion].options[correct]}`;
+        document.getElementById("result").classList.add("wrong");
+      }
+      document.getElementById("score").innerText = `Score: ${score}/${totalQuestions}`;
+      document.getElementById("submit-btn").style.display = "none";
+      document.getElementById("next-btn").style.display = "inline";
+    }
+
+    function nextQuestion() {
+      currentQuestion++;
+      document.getElementById("result").classList.remove("correct", "wrong");
+      loadQuestion();
+    }
+
+    function showFinalScore() {
+      document.getElementById("question-number").innerText = "Quiz Complete!";
+      document.getElementById("question-text").innerText = "Thanks for playing!";
+      document.getElementById("quizForm").style.display = "none";
+      document.getElementById("result").innerText = `Final Score: ${score}/${totalQuestions}`;
+      document.getElementById("result").classList.add("final");
+    }
+  </script>
+</body>
+</html>

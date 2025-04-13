@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Agriculture Learning Portal</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Agriculture Learning Portal</h1>
+    <p>Learn farming techniques easily!</p>
+  </header>
+
+  <nav>
+    <a href="article.html">Articles</a>
+    <a href="video.html">Videos</a>
+    <a href="quiz.html">Quizzes</a>
+  </nav>
+
+  <main>
+    <h2>Welcome</h2>
+    <p>Start learning about farming today with our resources.</p>
+
+    <section class="features">
+      <div class="card">
+        <h3>📚 Easy Articles</h3>
+        <p>Understand farming basics with simple, well-written guides.</p>
+      </div>
+      <div class="card">
+        <h3>🎥 Video Tutorials</h3>
+        <p>Watch step-by-step videos to learn farming techniques visually.</p>
+      </div>
+      <div class="card">
+        <h3>🧠 Fun Quizzes</h3>
+        <p>Test your knowledge with interactive quizzes.</p>
+        <div class="quiz-topics">
+          <div class="quiz-card"><a href="quiz-crop.html">Crop Basics</a></div>
+          <div class="quiz-card"><a href="quiz-soil.html">Soil Management</a></div>
+          <div class="quiz-card"><a href="quiz-pest.html">Pest Control</a></div>
+          <div class="quiz-card"><a href="quiz-irrigation.html">Irrigation Techniques</a></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Hidden by default, shown on hover -->
+    <div id="feature-image"></div>
+  </main>
+
+  <script>
+    const cardData = {
+      "Easy Articles": "https://cdn.pixabay.com/photo/2024/06/28/05/57/book-8858594_1280.jpg",
+      "Video Tutorials": "https://img.freepik.com/premium-vector/paddy-icon-logo-vector-design-template_827767-2940.jpg?w=2000",
+      "Fun Quizzes": "https://wallpaper-mania.com/wp-content/uploads/2018/09/High_resolution_wallpaper_background_ID_77701530291-1200x675.jpg"
+    };
+
+    const cards = document.querySelectorAll(".card");
+    cards.forEach(card => {
+      const title = card.querySelector("h3").textContent.replace("📚", "").replace("🎥", "").replace("🧠", "").trim();
+      const popup = card.querySelector(".popup");
+      const imgSrc = cardData[title];
+
+      if (imgSrc) {
+        popup.innerHTML = `<img src="${imgSrc}" alt="${title}" class="popup-img">`;
+      }
+
+      card.addEventListener("mouseover", () => {
+        popup.style.display = "block";
+      });
+
+      card.addEventListener("mouseout", () => {
+        popup.style.display = "none";
+      });
+    });
+  </script>
+</body>
+</html>
